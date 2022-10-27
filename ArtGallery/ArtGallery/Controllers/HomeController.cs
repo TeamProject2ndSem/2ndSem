@@ -26,5 +26,18 @@ namespace ArtGallery.Controllers
 
             return View();
         }
+        public ActionResult Exhibition()
+        {
+            return View();
+        }
+        public ActionResult PersonalDe()
+        {
+            return View();
+        }
+        //public ActionResult cart()
+        //{
+        //    return View();
+        //}
+
     }
 }

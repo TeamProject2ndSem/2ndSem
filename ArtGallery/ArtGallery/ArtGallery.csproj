@@ -374,6 +374,8 @@
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\boxicons\fonts\boxicons.woff" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\boxicons\fonts\boxicons.woff2" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\swiper\swiper-bundle.min.js.map" />
+    <Content Include="Views\Home\Exhibition.cshtml" />
+    <Content Include="Views\Home\PersonalDe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
