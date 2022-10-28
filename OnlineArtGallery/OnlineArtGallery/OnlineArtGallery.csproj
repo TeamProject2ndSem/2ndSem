@@ -316,7 +316,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\bootstrap-icons\bootstrap-icons.json" />
@@ -353,6 +352,10 @@
     <Content Include="Views\Home\PersonalDe.cshtml" />
     <Content Include="Views\AccountsManagement\Login.cshtml" />
     <Content Include="Views\AccountsManagement\signup.cshtml" />
+    <Content Include="Views\Home\Journey.cshtml" />
+    <Content Include="Views\Home\visionnMission.cshtml" />
+    <Content Include="Views\Home\PrivacynPolicy.cshtml" />
+    <Content Include="Views\Home\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

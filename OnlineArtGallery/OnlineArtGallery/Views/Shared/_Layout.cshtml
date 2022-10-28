@@ -50,18 +50,17 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                    @*@if (User.Identity.IsAuthenticated)
+                    {*@
                         <li>@Html.ActionLink("Home", "Index", "Home") </li>
                         <li class="dropdown">
                             <a href="#">
                                 <span>About</span> <i class="bi bi-chevron-down"></i>
                             </a>
                             <ul>
-                                <li> @Html.ActionLink("Journey", "About", "Home")</li>
-                                <li><a href="#">Vision & Mission</a></li>
-                                <li><a href="#">Board of Trustees</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li> @Html.ActionLink("Journey", "Journey", "Home")</li>
+                                <li>@Html.ActionLink("Vision & Mission", "visionnMission", "Home")</li>
+                                <li>@Html.ActionLink("Privacy Policy", "PrivacynPolicy", "Home")</li>
                             </ul>
                         </li>
                         <li> @Html.ActionLink("Exhibition", "Exhibition", "Home")</li>
@@ -74,11 +73,11 @@
 
                         <li>@User.Identity.Name</li>
                         <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
-                    }
+                    @*}
                     else
-                    {
+                    {*@
                         <li>@Html.ActionLink("Login","Login", "AccountsManagement")</li>
-                    }
+                    @*}*@
 
 </div>
                 </ul>
