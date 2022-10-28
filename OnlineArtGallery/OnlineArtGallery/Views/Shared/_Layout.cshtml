@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Portfolio Details - Art-Gallery Bootstrap Template</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="~/ThemePageIntegrated/Flexor/assets/img/favicon.png" rel="icon" />
+    <link href="~/ThemePageIntegrated/Flexor/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="~/ThemePageIntegrated/Flexor/assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+          rel="stylesheet" />
+    <link href="~/ThemePageIntegrated/Flexor/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="~/ThemePageIntegrated/Flexor/assets/vendor/glightbox/css/glightbox.min.css"
+          rel="stylesheet" />
+    <link href="~/ThemePageIntegrated/Flexor/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/ThemePageIntegrated/Flexor/assets/css/style.css" rel="stylesheet" />
+
+    <!-- =======================================================
+    * Template Name: Art-Gallery - v4.9.1
+    * Template URL: https://bootstrapmade.com/Art-Gallery-free-multipurpose-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="logo">
+                <h1><a href="~/Views/Home/Index.cshtml">Art-Gallery</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home") </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>About</span> <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <ul>
+                                <li> @Html.ActionLink("Journey", "About", "Home")</li>
+                                <li><a href="#">Vision & Mission</a></li>
+                                <li><a href="#">Board of Trustees</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </li>
+                        <li> @Html.ActionLink("Exhibition", "Exhibition", "Home")</li>
+                        <li>
+                            @Html.ActionLink("Personal Details", "PersonalDe", "Home")
+                        </li>
+                        <li> @Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li><a href="#">Cart<i class="bi bi-cart"></i></a></li>
+
+
+                        <li>@User.Identity.Name</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login","Login", "AccountsManagement")</li>
+                    }
+
+</div>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <section id="portfolio-details" class="portfolio-details">
+        @RenderBody();
+    </section>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Art-Gallery</h3>
+                        <p>
+                            Gulshan-e-Iqbal block-13-c <br />
+                            sindh near Allied-Bank<br />
+                            Karachi,Pakistan <br /><br />
+                            <strong>Phone:</strong> +928884933302<br />
+                            <strong>Email:</strong> ArtGallery@example.com<br />
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i> <a href="#">About us</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i> <a href="#">Board of Trustees</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Terms of service</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Privacy policy</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>EXHIBITIONS</h4>
+                        <ul>
+                            <li>
+                                <i class="bx bx-chevron-right"></i> <a href="#">Current </a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Upcoming</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">
+                                    Available To Museums
+                                </a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i> <a href="#">Past Highlights</a>
+                            </li>
+                            <li>
+                                <i class="bx bx-chevron-right"></i>
+                                <a href="#">Graphic Design</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <p>
+                            Tamen quem nulla quae legam multos aute sint culpa legam noster
+                            magna
+                        </p>
+                        <form action="" method="post">
+                            <input type="email" name="email" /><input type="submit"
+                                                                      value="Subscribe" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-lg-flex py-4">
+            <div class="me-lg-auto text-center text-lg-start">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Art-Gallery</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/Art-Gallery-free-multipurpose-bootstrap-template/ -->
+                    <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+                </div>
+            </div>
+            <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+
+    <a href="#"
+       class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/aos/aos.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/ThemePageIntegrated/Flexor/assets/js/main.js"></script>
+
+    <!-- For Icon-ADDToCart -->
+
+</body>
+</html>
+@RenderSection("Scripts", required: false);
