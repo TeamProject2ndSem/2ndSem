@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineArtGallery.Controllers
 {
-    //[Authorize]
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -35,12 +35,7 @@ namespace OnlineArtGallery.Controllers
             return View();
         }
 
-        public ActionResult Payment()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
+        
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -51,6 +46,14 @@ namespace OnlineArtGallery.Controllers
         {
             return View();
         }
+        [Authorize]
+        public ActionResult Payment()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+        [Authorize]
         public ActionResult PersonalDe()
         {
             return View();
