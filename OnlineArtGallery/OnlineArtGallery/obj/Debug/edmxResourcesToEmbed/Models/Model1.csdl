@@ -5,7 +5,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="users" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="users" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="lname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
@@ -18,13 +18,15 @@
     <Property Name="pcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="gender" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="pass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="verifyed" Type="Int32" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="inibuyer" ToRole="UserRole" />
   </EntityType>
   <EntityType Name="reqacce">
     <Key>
       <PropertyRef Name="reqid" />
     </Key>
     <Property Name="reqid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="requsers" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="requsers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="reqfname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="reqlname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="reqemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
@@ -39,8 +41,34 @@
     <Property Name="reqpass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="reqstatus" Type="Int32" />
   </EntityType>
-  <EntityContainer Name="galleryEntities" annotation:LazyLoadingEnabled="true">
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="role" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inibuyers" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="UserRole" ToRole="inibuyer" />
+  </EntityType>
+  <Association Name="FK__inibuyer__users__70DDC3D8">
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+    <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="role" />
+      </Principal>
+      <Dependent Role="inibuyer">
+        <PropertyRef Name="users" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="galleryEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="inibuyers" EntityType="Self.inibuyer" />
     <EntitySet Name="reqacces" EntityType="Self.reqacce" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK__inibuyer__users__70DDC3D8" Association="Self.FK__inibuyer__users__70DDC3D8">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="inibuyer" EntitySet="inibuyers" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

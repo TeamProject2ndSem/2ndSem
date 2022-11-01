@@ -65,20 +65,47 @@
                     <li> @Html.ActionLink("Exhibition", "Exhibition", "Home")</li>
 
                     <li> @Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (User.Identity.IsAuthenticated)
+
+
+                    @if (User.IsInRole("Admin"))
                     {
+                        <li>
+                            @Html.ActionLink("Admin", "AdminHome", "Admin")
+                        </li>
+
+                        <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
+                    }
+                    else if (User.IsInRole("Buyer"))
+                    {
+
                         <li><a href="#">Cart<i class="bi bi-cart"></i></a></li>
 
                         <li>
                             @Html.ActionLink("Personal Details", "PersonalDe", "Home")
                         </li>
-                        <li>@User.Identity.Name</li>
+
+                        <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
+
+                    }
+                    else if (User.IsInRole("Artist"))
+                    {
+
                         <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
                     }
                     else
                     {
+
                         <li>@Html.ActionLink("Login", "Login", "AccountsManagement")</li>
                     }
+
+
+
+
+
+
+
+
+
 
 </div>
                 </ul>

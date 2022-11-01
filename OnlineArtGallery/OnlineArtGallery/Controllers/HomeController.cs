@@ -6,15 +6,14 @@ using System.Web.Mvc;
 
 namespace OnlineArtGallery.Controllers
 {
-    
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+      
         public ActionResult Index()
         {
             return View();
         }
-
-       
 
         public ActionResult Journey()
         {
@@ -46,14 +45,14 @@ namespace OnlineArtGallery.Controllers
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Buyer")]
         public ActionResult Payment()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Buyer")]
         public ActionResult PersonalDe()
         {
             return View();

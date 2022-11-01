@@ -10,7 +10,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="users" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="users" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fname" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="lname" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="250" Nullable="false" />
@@ -23,13 +23,14 @@
           <Property Name="pcode" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="gender" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="pass" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="verifyed" Type="int" />
         </EntityType>
         <EntityType Name="reqacces">
           <Key>
             <PropertyRef Name="reqid" />
           </Key>
           <Property Name="reqid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="requsers" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="requsers" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="reqfname" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="reqlname" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="reqemail" Type="varchar" MaxLength="250" Nullable="false" />
@@ -44,9 +45,34 @@
           <Property Name="reqpass" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="reqstatus" Type="int" />
         </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="role" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__inibuyer__users__70DDC3D8">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="inibuyer">
+              <PropertyRef Name="users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="galleryModelStoreContainer">
           <EntitySet Name="inibuyer" EntityType="Self.inibuyer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="reqacces" EntityType="Self.reqacces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__inibuyer__users__70DDC3D8" Association="Self.FK__inibuyer__users__70DDC3D8">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="inibuyer" EntitySet="inibuyer" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -58,7 +84,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="users" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="users" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="lname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
@@ -71,13 +97,15 @@
           <Property Name="pcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="gender" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="verifyed" Type="Int32" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="inibuyer" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="reqacce">
           <Key>
             <PropertyRef Name="reqid" />
           </Key>
           <Property Name="reqid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="requsers" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="requsers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reqfname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reqlname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reqemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
@@ -92,16 +120,42 @@
           <Property Name="reqpass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reqstatus" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="galleryEntities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="role" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="inibuyers" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="UserRole" ToRole="inibuyer" />
+        </EntityType>
+        <Association Name="FK__inibuyer__users__70DDC3D8">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="inibuyer">
+              <PropertyRef Name="users" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="galleryEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="inibuyers" EntityType="Self.inibuyer" />
           <EntitySet Name="reqacces" EntityType="Self.reqacce" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <AssociationSet Name="FK__inibuyer__users__70DDC3D8" Association="Self.FK__inibuyer__users__70DDC3D8">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="inibuyer" EntitySet="inibuyers" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="galleryModelStoreContainer" CdmEntityContainer="galleryEntities">
+        <EntityContainerMapping StorageEntityContainer="galleryModelStoreContainer" CdmEntityContainer="galleryEntities1">
           <EntitySetMapping Name="inibuyers">
             <EntityTypeMapping TypeName="galleryModel.inibuyer">
               <MappingFragment StoreEntitySet="inibuyer">
@@ -119,6 +173,7 @@
                 <ScalarProperty Name="pcode" ColumnName="pcode" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="verifyed" ColumnName="verifyed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -140,6 +195,15 @@
                 <ScalarProperty Name="reqgender" ColumnName="reqgender" />
                 <ScalarProperty Name="reqpass" ColumnName="reqpass" />
                 <ScalarProperty Name="reqstatus" ColumnName="reqstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="galleryModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="role" ColumnName="role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,6 +1,7 @@
 ﻿using OnlineArtGallery.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,7 +20,7 @@ namespace OnlineArtGallery.Controllers
         public ActionResult Login(UserAuthClass model)
         {
            
-            using (var context = new galleryEntities())
+            using (var context = new galleryEntities1())
             {
                 bool isvaid = context.inibuyers.Any(x => x.email == model.email && x.pass == model.pass);
                 if (isvaid)
@@ -39,10 +40,28 @@ namespace OnlineArtGallery.Controllers
         [HttpPost]
         public ActionResult signup(inibuyer model)
         {
-            using (var context = new galleryEntities())
+            using (var context = new galleryEntities1())
             {
-                context.inibuyers.Add(model);
-                context.SaveChanges();
+                
+                try
+                {
+                    context.inibuyers.Add(model);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
+                }
             }
             return RedirectToAction("Login");
         }

@@ -13,10 +13,10 @@ namespace OnlineArtGallery.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class galleryEntities : DbContext
+    public partial class galleryEntities1 : DbContext
     {
-        public galleryEntities()
-            : base("name=galleryEntities")
+        public galleryEntities1()
+            : base("name=galleryEntities1")
         {
         }
     
@@ -27,5 +27,6 @@ namespace OnlineArtGallery.Models
     
         public virtual DbSet<inibuyer> inibuyers { get; set; }
         public virtual DbSet<reqacce> reqacces { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
     }
 }
