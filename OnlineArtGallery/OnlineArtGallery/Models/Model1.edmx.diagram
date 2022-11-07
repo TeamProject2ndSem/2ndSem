@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="galleryModel.reqacce" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="galleryModel.UserRole" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="galleryModel.FK__inibuyer__users__70DDC3D8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="galleryModel.Artdetail" Width="1.75" PointX="5.125" PointY="5.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

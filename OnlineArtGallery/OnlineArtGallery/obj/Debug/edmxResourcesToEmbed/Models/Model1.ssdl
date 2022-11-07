@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="galleryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Artdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nameart" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="hidemail" Type="varchar" MaxLength="250" />
+    <Property Name="userrole" Type="varchar" MaxLength="250" />
+    <Property Name="nameartist" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="descriptionofart" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="artsize" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="avali" Type="varchar" MaxLength="100" />
+    <Property Name="review" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="4000" Nullable="false" />
+    <Property Name="dates" Type="varchar" MaxLength="250" />
+  </EntityType>
   <EntityType Name="inibuyer">
     <Key>
       <PropertyRef Name="id" />
@@ -48,7 +65,7 @@
     <Property Name="userid" Type="int" Nullable="false" />
     <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK__inibuyer__users__70DDC3D8">
+  <Association Name="FK__inibuyer__users__05D8E0BE">
     <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
     <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -61,10 +78,11 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="galleryModelStoreContainer">
+    <EntitySet Name="Artdetails" EntityType="Self.Artdetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inibuyer" EntityType="Self.inibuyer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="reqacces" EntityType="Self.reqacces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__inibuyer__users__70DDC3D8" Association="Self.FK__inibuyer__users__70DDC3D8">
+    <AssociationSet Name="FK__inibuyer__users__05D8E0BE" Association="Self.FK__inibuyer__users__05D8E0BE">
       <End Role="UserRole" EntitySet="UserRole" />
       <End Role="inibuyer" EntitySet="inibuyer" />
     </AssociationSet>

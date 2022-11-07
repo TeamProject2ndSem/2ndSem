@@ -52,5 +52,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Artdetails">
+      <EntityTypeMapping TypeName="galleryModel.Artdetail">
+        <MappingFragment StoreEntitySet="Artdetails">
+          <ScalarProperty Name="hidemail" ColumnName="hidemail" />
+          <ScalarProperty Name="dates" ColumnName="dates" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="review" ColumnName="review" />
+          <ScalarProperty Name="avali" ColumnName="avali" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="artsize" ColumnName="artsize" />
+          <ScalarProperty Name="descriptionofart" ColumnName="descriptionofart" />
+          <ScalarProperty Name="nameartist" ColumnName="nameartist" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="nameart" ColumnName="nameart" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

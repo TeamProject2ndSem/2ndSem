@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineArtGallery.Models;
 
 namespace OnlineArtGallery.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller
     {
-      
         public ActionResult Index()
         {
             return View();
@@ -52,10 +52,29 @@ namespace OnlineArtGallery.Controllers
 
             return View();
         }
+
         [Authorize(Roles = "Buyer")]
+        [HttpGet]
         public ActionResult PersonalDe()
         {
+            try
+            {
+                string name = Session["name"].ToString();
+                using (galleryEntities1 context = new galleryEntities1())
+                {
+                    var dated = context.inibuyers.Where(x => x.email == name).SingleOrDefault();
+                   
+                    
+                    return View(dated);
+                }
+            }
+            catch
+            {
+                ViewBag.message = "Error Appeared";
+            }
             return View();
+
         }
+
     }
 }

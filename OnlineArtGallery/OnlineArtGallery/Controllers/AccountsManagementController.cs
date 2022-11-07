@@ -16,40 +16,51 @@ namespace OnlineArtGallery.Controllers
         {
             return View();
         }
+        //Action Method For Login Page
         [HttpPost]
         public ActionResult Login(UserAuthClass model)
         {
-           
+           //All Data which will be in UserAuthClass will be displayed in model           
             using (var context = new galleryEntities1())
             {
+                //Checking if the email and pass entered is Stored on database
                 bool isvaid = context.inibuyers.Any(x => x.email == model.email && x.pass == model.pass);
                 if (isvaid)
                 {
+                    //Storing in tempdata to pass in home controller action result personelde
+                    //TempData["name"] = model.email;
+                    Session["name"] = model.email;
+                    //keeping email for a while
                     FormsAuthentication.SetAuthCookie(model.email, false);
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Invalid username and password");
+                //if there is no match with email and password then this will be throw
+                ModelState.AddModelError("", "Invalid Email and password");
                 return View();
             }
 
         }
         public ActionResult signup()
         {
+            //empty signup
             return View();
         }
         [HttpPost]
         public ActionResult signup(inibuyer model)
         {
+            //overloaded signup
             using (var context = new galleryEntities1())
             {
                 
                 try
                 {
+                    //it is used to add information in database table inibuyer
                     context.inibuyers.Add(model);
                     context.SaveChanges();
                 }
                 catch (DbEntityValidationException e)
                 {
+                    //Exception is used if there will be any type of error
                     foreach (var eve in e.EntityValidationErrors)
                     {
                         Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
@@ -63,12 +74,17 @@ namespace OnlineArtGallery.Controllers
                     throw;
                 }
             }
+            //Make login visible
             return RedirectToAction("Login");
         }
 
         public ActionResult Logout()
         {
+            //session will be ended
+            Session.Abandon();
+            //Authentication will be signout and every fetched detail will be droped
             FormsAuthentication.SignOut();
+            //Make login visible
             return RedirectToAction("Login");
         }
     }

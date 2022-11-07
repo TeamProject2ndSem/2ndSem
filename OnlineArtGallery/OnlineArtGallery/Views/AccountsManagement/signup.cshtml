@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>signup</h2>
 
 @using (Html.BeginForm())
 {
@@ -26,16 +25,14 @@
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-9">
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
                                 <form>
 
-
-
-                                    <div class="form-check form-outline mb-4">
+                                    <div class="form-check form-outline mb-4 text-center">
                                         <label class="form-label font-weight-bold px-5" for="user">UserRole</label>
                                         @Html.RadioButtonFor(model => model.users, "Buyer", new { @class = "form-check-input", @type = "radio", @name = "user", @id = "Buyer" })
                                         <label class="form-check-label font-italic pr-4" for="Buyer">
@@ -47,70 +44,7 @@
                                             Artist
                                         </label>
                                     </div>
-
-
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="FName">First Name</label>
-                                        @Html.TextBoxFor(m => m.fname, new { @class = "form-control form-control-lg ", @type = "text", @id = "FName" })
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="lname">Last Name</label>
-                                        @Html.TextBoxFor(m => m.lname, new { @class = "form-control form-control-lg ", @type = "text", @id = "lname" })
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="email">Your Email</label>
-                                        @Html.TextBoxFor(m => m.email, new { @class = "form-control form-control-lg ", @type = "email", @id = "email" })
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="contactt">Phone No</label>
-                                        @Html.TextBoxFor(m => m.contactt, new { @class = "form-control form-control-lg ", @type = "text", @id = "contactt" })
-
-                                    </div>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="contacto">Tel No</label>
-                                        @Html.TextBoxFor(m => m.contacto, new { @class = "form-control form-control-lg ", @type = "text", @id = "contacto" })
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="adress">Address</label>
-                                        @Html.TextBoxFor(m => m.adress, new { @class = "form-control form-control-lg ", @type = "text", @id = "adress" })
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="region">Region</label>
-                                        @Html.TextBoxFor(m => m.region, new { @class = "form-control form-control-lg ", @type = "text", @id = "region" })
-
-
-                                    </div>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="city">City</label>
-                                        @Html.TextBoxFor(m => m.city, new { @class = "form-control form-control-lg ", @type = "text", @id = "city" })
-
-
-                                    </div>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="coun">Country</label>
-                                        @Html.TextBoxFor(m => m.country, new { @class = "form-control form-control-lg ", @type = "text", @id = "coun" })
-
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="pcode">Postal Code</label>
-                                        @Html.TextBoxFor(m => m.pcode, new { @class = "form-control form-control-lg ", @type = "text", @id = "pcode" })
-
-                                    </div>
-
-                                    <div class="form-check form-outline mb-4">
+                                    <div class="form-check form-outline mb-4 text-center">
                                         <label class="form-label px-5 font-weight-bold ">Gender</label>
                                         @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "form-check-input ", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault1" })
                                         <label class="form-check-label font-italic pr-4" for="flexRadioDefault1">
@@ -132,13 +66,119 @@
                                         </label>
                                     </div>
 
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Name input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="FName">First Name</label>
+                                                    @Html.TextBoxFor(m => m.fname, new { @class = "form-control form-control-lg ", @type = "text", @id = "FName" })
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- Email input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="lname">Last Name</label>
+                                                    @Html.TextBoxFor(m => m.lname, new { @class = "form-control form-control-lg ", @type = "text", @id = "lname" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="email">Your Email</label>
+                                        @Html.TextBoxFor(m => m.email, new { @class = "form-control form-control-lg ", @type = "email", @id = "email" })
+
+                                    </div>
+
+
+
+
+
+
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Name input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="contactt">Phone No</label>
+                                                    @Html.TextBoxFor(m => m.contactt, new { @class = "form-control form-control-lg ", @type = "text", @id = "contactt" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- Email input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <div class="form-outline mb-4">
+                                                        <label class="form-label" for="adress">Address</label>
+                                                        @Html.TextBoxFor(m => m.adress, new { @class = "form-control form-control-lg ", @type = "text", @id = "adress" })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Name input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="region">Region</label>
+                                                    @Html.TextBoxFor(m => m.region, new { @class = "form-control form-control-lg ", @type = "text", @id = "region" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- Email input -->
+                                            <div class="form-outline mb-4">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="city">City</label>
+                                                    @Html.TextBoxFor(m => m.city, new { @class = "form-control form-control-lg ", @type = "text", @id = "city" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Name input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="coun">Country</label>
+                                                    @Html.TextBoxFor(m => m.country, new { @class = "form-control form-control-lg ", @type = "text", @id = "coun" })
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- Email input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="pcode">Postal Code</label>
+                                                    @Html.TextBoxFor(m => m.pcode, new { @class = "form-control form-control-lg ", @type = "text", @id = "pcode" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="pass">Password</label>
                                         @Html.TextBoxFor(m => m.pass, new { @class = "form-control form-control-lg ", @type = "password", @id = "pass" })
 
                                     </div>
+
+
 
                                     @*<div class="form-check d-flex justify-content-center mb-5">
             @Html.CheckBoxFor(model => model.verify ,new { @class="form-check-input me-2" ,@type="checkbox" ,@value="" ,@id= "Verify" })

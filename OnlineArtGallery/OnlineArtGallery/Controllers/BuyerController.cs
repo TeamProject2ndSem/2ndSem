@@ -6,11 +6,10 @@ using System.Web.Mvc;
 
 namespace OnlineArtGallery.Controllers
 {
-    public class AdminController : Controller
+    public class BuyerController : Controller
     {
-        [Authorize(Roles = "Admin")]
-        // GET: Admin
-        public ActionResult AdminHome()
+        // GET: Buyer
+        public ActionResult Index()
         {
             return View();
         }

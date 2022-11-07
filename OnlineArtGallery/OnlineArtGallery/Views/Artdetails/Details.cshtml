@@ -1,0 +1,107 @@
+﻿@model OnlineArtGallery.Models.Artdetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Artdetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userrole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userrole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nameartist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameartist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descriptionofart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descriptionofart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.artsize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.artsize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.avali)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.avali)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.review)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.review)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.img)" alt="">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dates)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hidemail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hidemail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

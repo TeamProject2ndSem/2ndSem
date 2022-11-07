@@ -153,8 +153,8 @@ C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\bin\System.Web.WebPa
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\bin\Newtonsoft.Json.xml
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\bin\Antlr3.Runtime.pdb
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\obj\Debug\OnlineArtGallery.csprojAssemblyReference.cache
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\obj\Debug\OnlineArtGallery.csproj.CoreCompileInputs.cache
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\obj\Debug\OnlineArtGallery.csproj.CopyComplete
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\obj\Debug\OnlineArtGallery.dll
 C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\obj\Debug\OnlineArtGallery.pdb
+C:\Repo\New folder\2ndSem\OnlineArtGallery\OnlineArtGallery\obj\Debug\OnlineArtGallery.csprojAssemblyReference.cache

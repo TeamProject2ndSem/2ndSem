@@ -1,0 +1,125 @@
+﻿@model IEnumerable<OnlineArtGallery.Models.Artdetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                ART-Name
+                @*@Html.DisplayNameFor(model => model.nameart)*@
+            </th>
+            <th>
+                User-Role
+                @*@Html.DisplayNameFor(model => model.userrole)*@
+            </th>
+            <th>
+                Artist
+                @*@Html.DisplayNameFor(model => model.nameartist)*@
+            </th>
+            <th>
+                Descrption
+
+                @*@Html.DisplayNameFor(model => model.descriptionofart)*@
+            </th>
+            <th>
+                Size
+
+                @*@Html.DisplayNameFor(model => model.artsize)*@
+            </th>
+            <th>
+                Price
+
+                @*@Html.DisplayNameFor(model => model.price)*@
+            </th>
+            <th>
+                Avaliablity
+
+                @*@Html.DisplayNameFor(model => model.avali)*@
+            </th>
+            <th>
+                Review
+
+                @*@Html.DisplayNameFor(model => model.review)*@
+            </th>
+            <th>
+                Img
+
+                @*@Html.DisplayNameFor(model => model.img)*@
+            </th>
+            <th>
+                Date
+
+                @*@Html.DisplayNameFor(model => model.dates)*@
+            </th>
+            <th>
+                Email-U
+
+                @*@Html.DisplayNameFor(model => model.hidemail)*@
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameart)
+                </td>
+                <td>
+                   
+                    @Html.DisplayFor(modelItem => item.userrole)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameartist)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descriptionofart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.artsize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.avali)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.review)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.img)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dates)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hidemail)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+</table>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+

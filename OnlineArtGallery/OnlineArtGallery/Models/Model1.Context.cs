@@ -28,5 +28,6 @@ namespace OnlineArtGallery.Models
         public virtual DbSet<inibuyer> inibuyers { get; set; }
         public virtual DbSet<reqacce> reqacces { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<Artdetail> Artdetails { get; set; }
     }
 }

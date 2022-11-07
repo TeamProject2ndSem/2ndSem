@@ -37,16 +37,17 @@ namespace OnlineArtGallery.Models
 
         public override string[] GetRolesForUser(string username)
         {
+            //It will fetch username and assign role
             using (var context = new galleryEntities1())
             {
-
-                
+                //role and other information retlated to users is in inbuyers which is joined with userrole another table 
+                //defined with user role individually and passed in array
                 var result = (from user in context.inibuyers
                               join role in context.UserRoles on user.users equals role.role
                               where user.email == username
                               select role.role ).ToArray();
-
-
+                
+                //result is returned
                 return result;
                              
             }

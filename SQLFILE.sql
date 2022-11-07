@@ -88,6 +88,47 @@ select users,fname,lname,email,contacto,contactt,adress,region,city,country,pcod
 
 -- NoteAnd to copy specific data than copy from Email and id both are unique
 select * from reqacces
-
 select * from inibuyer
 select * from UserRole
+
+use gallery
+-- ========>Admin Tables<========
+create table Artdetails
+(
+id int identity(1,1) primary key not null,
+nameart varchar(250) not null,
+hidemail varchar(250) default 'GalleryLocal' ,
+userrole varchar(250) default 'GalleryLocal' ,
+nameartist varchar(250) not null,
+descriptionofart nvarchar(1000) not null,
+artsize nvarchar(200) not null,
+price int not null,
+avali varchar(100) default 'Instock',
+review nvarchar(1000) not null,
+img nvarchar(4000) not null,
+dates varchar(250) default getdate() 
+)
+drop table Artdetails
+
+select * from inibuyer
+create
+drop table Artdetails
+--select All from Artdetail
+select * from Artdetails
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

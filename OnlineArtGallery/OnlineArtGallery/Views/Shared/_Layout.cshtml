@@ -15,7 +15,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet" />
-
     <!-- Vendor CSS Files -->
     <link href="~/ThemePageIntegrated/Flexor/assets/vendor/aos/aos.css" rel="stylesheet" />
     <link href="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/css/bootstrap.min.css"
@@ -69,54 +68,66 @@
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>
-                            @Html.ActionLink("Admin", "AdminHome", "Admin")
-                        </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <span>Buyer Related</span> <i class="bi bi-chevron-down"></i>
+                            </a>
+                            <ul>
+                                @*TO UPLOAD IMAGES OF ART*@
+                                <li> @Html.ActionLink("Uploaded Art", "Index", "Artdetails")</li>
+                                <li>
 
+                                    @Html.ActionLink("Add-Post", "Editimage", "inibuyers")
+                                </li>
+                                <li>@Html.ActionLink("Privacy Policy", "PrivacynPolicy", "Home")</li>
+
+                                <li>
+                                    @Html.ActionLink("Add-Post", "Editimage", "inibuyers")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("BuyersAccounts", "Index", "inibuyers")
+                                </li>
+
+                            </ul>
+                        </li>
                         <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
-                    }
-                    else if (User.IsInRole("Buyer"))
-                    {
+                        }
+                        else if (User.IsInRole("Buyer"))
+                        {/*Section IS AUTHORIZED FOR BUYERS*/
 
                         <li><a href="#">Cart<i class="bi bi-cart"></i></a></li>
 
                         <li>
+                            @*DETAILS OF BUYER*@
                             @Html.ActionLink("Personal Details", "PersonalDe", "Home")
                         </li>
-
+                        //LOGOUT
                         <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
 
                     }
                     else if (User.IsInRole("Artist"))
                     {
-
+                        //LOGOUT
                         <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
                     }
                     else
                     {
-
+                        //lOGIN
                         <li>@Html.ActionLink("Login", "Login", "AccountsManagement")</li>
                     }
 
 
-
-
-
-
-
-
-
-
-</div>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
         </div>
+        
     </header>
     <!-- End Header -->
 
     <section id="portfolio-details" class="portfolio-details">
+       
         @RenderBody();
     </section>
 
@@ -203,6 +214,7 @@
         <div class="container d-lg-flex py-4">
             <div class="me-lg-auto text-center text-lg-start">
                 <div class="copyright">
+                   
                     &copy; Copyright <strong><span>Art-Gallery</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">

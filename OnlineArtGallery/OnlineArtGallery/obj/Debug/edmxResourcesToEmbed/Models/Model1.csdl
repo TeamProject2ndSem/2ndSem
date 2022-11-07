@@ -70,5 +70,23 @@
       <End Role="UserRole" EntitySet="UserRoles" />
       <End Role="inibuyer" EntitySet="inibuyers" />
     </AssociationSet>
+    <EntitySet Name="Artdetails" EntityType="galleryModel.Artdetail" />
   </EntityContainer>
+  <EntityType Name="Artdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameart" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userrole" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="nameartist" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descriptionofart" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="artsize" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="avali" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="review" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dates" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="hidemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
