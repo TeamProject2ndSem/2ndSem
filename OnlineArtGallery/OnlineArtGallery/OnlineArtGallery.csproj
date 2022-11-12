@@ -132,7 +132,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountsManagementController.cs" />
     <Compile Include="Controllers\ArtdetailsController.cs" />
-    <Compile Include="Controllers\BuyerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\inibuyersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,23 +143,25 @@
     <Compile Include="Models\inibuyer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Models\Model1.Context.cs" />
+    <Compile Include="Models\Model1.Context1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Model1.Designer.cs">
+      <DependentUpon>Model1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model11.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Models\Model11.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\reqacce.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserAuthClass.cs" />
     <Compile Include="Models\UserRole.cs">
@@ -180,19 +181,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <LastGenOutput>Model1.Context1.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <LastGenOutput>Model11.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model11.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -329,7 +328,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\bootstrap-icons\bootstrap-icons.json" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff2" />
@@ -360,31 +358,25 @@
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\boxicons\fonts\boxicons.woff" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\boxicons\fonts\boxicons.woff2" />
     <Content Include="ThemePageIntegrated\Flexor\assets\vendor\swiper\swiper-bundle.min.js.map" />
-    <Content Include="Views\Home\Exhibition.cshtml" />
     <Content Include="Views\AccountsManagement\Login.cshtml" />
     <Content Include="Views\AccountsManagement\signup.cshtml" />
     <Content Include="Views\Home\Journey.cshtml" />
     <Content Include="Views\Home\visionnMission.cshtml" />
     <Content Include="Views\Home\PrivacynPolicy.cshtml" />
     <Content Include="Views\Home\Payment.cshtml" />
-    <Content Include="Views\inibuyers\Create.cshtml" />
-    <Content Include="Views\inibuyers\Delete.cshtml" />
     <Content Include="Views\inibuyers\Details.cshtml" />
-    <Content Include="Views\inibuyers\Edit.cshtml" />
     <Content Include="Views\inibuyers\Index.cshtml" />
     <Content Include="Views\Home\PersonalDe.cshtml" />
     <Content Include="Views\inibuyers\Editimage.cshtml" />
-    <Content Include="Views\inibuyers\EditimageView.cshtml" />
-    <Content Include="Views\Artdetails\Create.cshtml" />
-    <Content Include="Views\Artdetails\Delete.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Artdetails\Details.cshtml" />
     <Content Include="Views\Artdetails\Edit.cshtml" />
     <Content Include="Views\Artdetails\Index.cshtml" />
+    <Content Include="Views\Home\ArtInSale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
-    <Folder Include="Views\Buyer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

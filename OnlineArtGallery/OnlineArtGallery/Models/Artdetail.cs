@@ -17,7 +17,7 @@ namespace OnlineArtGallery.Models
     {
         public int id { get; set; }
         public string nameart { get; set; }
-        public string userrole { get; set; }
+        public string hidemail { get; set; }
         public string nameartist { get; set; }
         public string descriptionofart { get; set; }
         public string artsize { get; set; }
@@ -25,9 +25,9 @@ namespace OnlineArtGallery.Models
         public string avali { get; set; }
         public string review { get; set; }
         public string img { get; set; }
-        public string dates { get; set; }
-        public string hidemail { get; set; }
-
+        public string appstatus { get; set; }
         public HttpPostedFileBase File { get; set; }
+
+
     }
 }

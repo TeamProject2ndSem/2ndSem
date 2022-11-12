@@ -28,7 +28,6 @@ namespace OnlineArtGallery.Models
         public string pcode { get; set; }
         public string gender { get; set; }
         public string pass { get; set; }
-        public Nullable<int> verifyed { get; set; }
     
         public virtual UserRole UserRole { get; set; }
     }

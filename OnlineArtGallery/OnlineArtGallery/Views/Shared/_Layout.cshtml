@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Portfolio Details - Art-Gallery Bootstrap Template</title>
+    <title>Online ArtGallery</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -29,12 +29,6 @@
     <!-- Template Main CSS File -->
     <link href="~/ThemePageIntegrated/Flexor/assets/css/style.css" rel="stylesheet" />
 
-    <!-- =======================================================
-    * Template Name: Art-Gallery - v4.9.1
-    * Template URL: https://bootstrapmade.com/Art-Gallery-free-multipurpose-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 <body>
 
@@ -43,8 +37,6 @@
         <div class="container d-flex align-items-center justify-content-between">
             <div class="logo">
                 <h1><a href="~/Views/Home/Index.cshtml">Art-Gallery</a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav id="navbar" class="navbar">
@@ -61,7 +53,7 @@
                             <li>@Html.ActionLink("Privacy Policy", "PrivacynPolicy", "Home")</li>
                         </ul>
                     </li>
-                    <li> @Html.ActionLink("Exhibition", "Exhibition", "Home")</li>
+                    <li> @Html.ActionLink("ArtInSale", "ArtInSale", "Home")</li>
 
                     <li> @Html.ActionLink("Contact", "Contact", "Home")</li>
 
@@ -70,32 +62,27 @@
                     {
                         <li class="dropdown">
                             <a href="#">
-                                <span>Buyer Related</span> <i class="bi bi-chevron-down"></i>
+                                <span>Admin Activities</span> <i class="bi bi-chevron-down"></i>
                             </a>
                             <ul>
-                                @*TO UPLOAD IMAGES OF ART*@
+                                @*TO Diplay Table Of Images/Post's*@
                                 <li> @Html.ActionLink("Uploaded Art", "Index", "Artdetails")</li>
                                 <li>
-
-                                    @Html.ActionLink("Add-Post", "Editimage", "inibuyers")
-                                </li>
-                                <li>@Html.ActionLink("Privacy Policy", "PrivacynPolicy", "Home")</li>
-
-                                <li>
+                                    @*Used to Add Image For Post With Details*@
                                     @Html.ActionLink("Add-Post", "Editimage", "inibuyers")
                                 </li>
                                 <li>
+                                    @*It Will Show All The User Accounts*@
                                     @Html.ActionLink("BuyersAccounts", "Index", "inibuyers")
                                 </li>
-
                             </ul>
                         </li>
+                        //Logout details
                         <li>@Html.ActionLink("Logout", "Logout", "AccountsManagement")</li>
                         }
                         else if (User.IsInRole("Buyer"))
                         {/*Section IS AUTHORIZED FOR BUYERS*/
 
-                        <li><a href="#">Cart<i class="bi bi-cart"></i></a></li>
 
                         <li>
                             @*DETAILS OF BUYER*@
@@ -127,7 +114,6 @@
     <!-- End Header -->
 
     <section id="portfolio-details" class="portfolio-details">
-       
         @RenderBody();
     </section>
 

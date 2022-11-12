@@ -5,103 +5,98 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Artdetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nameart)
-        </dt>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!DOCTYPE html>
+    <html lang="en">
 
-        <dd>
-            @Html.DisplayFor(model => model.nameart)
-        </dd>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.userrole)
-        </dt>
+        <title>Portfolio Details - Flexor Bootstrap Template</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
 
-        <dd>
-            @Html.DisplayFor(model => model.userrole)
-        </dd>
+        <!-- Favicons -->
+        <link href="~/ThemePageIntegrated/Flexor/assets/img/favicon.png" rel="icon">
+        <link href="~/ThemePageIntegrated/Flexor/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nameartist)
-        </dt>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        <dd>
-            @Html.DisplayFor(model => model.nameartist)
-        </dd>
+        <!-- Vendor CSS Files -->
+        <link href="~/ThemePageIntegrated/Flexor/assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="~/ThemePageIntegrated/Flexor/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="~/ThemePageIntegrated/Flexor/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="~/ThemePageIntegrated/Flexor/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.descriptionofart)
-        </dt>
+        <!-- Template Main CSS File -->
+        <link href="~/ThemePageIntegrated/Flexor/assets/css/style.css" rel="stylesheet">
 
-        <dd>
-            @Html.DisplayFor(model => model.descriptionofart)
-        </dd>
+    </head>
+    <body>
+        <main id="main">
+           
+            <!-- ======= Portfolio Details Section ======= -->
+            <section id="portfolio-details" class="portfolio-details">
+                <div class="container">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.artsize)
-        </dt>
+                    <div class="row gy-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.artsize)
-        </dd>
+                        <div class="col-lg-8">
+                            <div class="portfolio-details-slider swiper">
+                                <div class="swiper-wrapper align-items-center">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+                                    <div class="swiper-slide">
+                                        <img src="@Url.Content(Model.img)" alt="">
+                                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.avali)
-        </dt>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.avali)
-        </dd>
+                        <div class="col-lg-4">
+                            <div class="portfolio-info">
+                                <h3>Information</h3>
+                                <ul>
+                                    <li>
+                                        <strong>Name-Art</strong>: @Html.DisplayFor(model => model.nameart)
+                                    </li>
+                                    <li>
+                                        <strong>Size</strong>:@Html.DisplayFor(model => model.artsize)
+                                    </li>
+                                    <li><strong>Avaliablity</strong>: @Html.DisplayFor(model => model.avali)</li>
+                                    <li><strong>Reviews</strong>@Html.DisplayFor(model => model.review)</li>
+                                    <li>
+                                        <strong>Made By</strong>:@Html.DisplayFor(model => model.nameartist)
+                                    </li>
+                                    <li>
+                                        <strong>Description</strong>: @Html.DisplayFor(model => model.descriptionofart)
+                                    </li>
+                                    <li><strong>Price</strong>@Html.DisplayFor(model => model.price)<b>$</b></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- End Portfolio Details Section -->
+        </main><!-- End #main -->
+    </body>
+</html>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/aos/aos.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="~/ThemePageIntegrated/Flexor/assets/js/main.js"></script>
+}
 
-        <dt>
-            @Html.DisplayNameFor(model => model.review)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.review)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.img)
-        </dt>
-
-        <dd>
-            <img src="@Url.Content(Model.img)" alt="">
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dates)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dates)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.hidemail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.hidemail)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

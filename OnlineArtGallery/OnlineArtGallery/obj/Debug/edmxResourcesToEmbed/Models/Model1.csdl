@@ -18,8 +18,7 @@
     <Property Name="pcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="gender" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="pass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="verifyed" Type="Int32" />
-    <NavigationProperty Name="UserRole" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="inibuyer" ToRole="UserRole" />
+    <NavigationProperty Name="UserRole" Relationship="galleryModel.FK__inibuyer__users__56B3DD81" FromRole="inibuyer" ToRole="UserRole" />
   </EntityType>
   <EntityType Name="reqacce">
     <Key>
@@ -41,18 +40,28 @@
     <Property Name="reqpass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="reqstatus" Type="Int32" />
   </EntityType>
+  <EntityContainer Name="galleryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="inibuyers" EntityType="Self.inibuyer" />
+    <EntitySet Name="reqacces" EntityType="Self.reqacce" />
+    <EntitySet Name="UserRoles" EntityType="galleryModel.UserRole" />
+    <AssociationSet Name="FK__inibuyer__users__56B3DD81" Association="galleryModel.FK__inibuyer__users__56B3DD81">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="inibuyer" EntitySet="inibuyers" />
+    </AssociationSet>
+    <EntitySet Name="Artdetails" EntityType="galleryModel.Artdetail" />
+  </EntityContainer>
   <EntityType Name="UserRole">
     <Key>
       <PropertyRef Name="role" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userid" Type="Int32" Nullable="false" />
-    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="inibuyers" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="UserRole" ToRole="inibuyer" />
+    <Property Name="role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="inibuyers" Relationship="galleryModel.FK__inibuyer__users__56B3DD81" FromRole="UserRole" ToRole="inibuyer" />
   </EntityType>
-  <Association Name="FK__inibuyer__users__70DDC3D8">
-    <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
-    <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
+  <Association Name="FK__inibuyer__users__56B3DD81">
+    <End Type="galleryModel.UserRole" Role="UserRole" Multiplicity="1" />
+    <End Type="galleryModel.inibuyer" Role="inibuyer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="UserRole">
         <PropertyRef Name="role" />
@@ -62,31 +71,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="galleryEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="inibuyers" EntityType="Self.inibuyer" />
-    <EntitySet Name="reqacces" EntityType="Self.reqacce" />
-    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
-    <AssociationSet Name="FK__inibuyer__users__70DDC3D8" Association="Self.FK__inibuyer__users__70DDC3D8">
-      <End Role="UserRole" EntitySet="UserRoles" />
-      <End Role="inibuyer" EntitySet="inibuyers" />
-    </AssociationSet>
-    <EntitySet Name="Artdetails" EntityType="galleryModel.Artdetail" />
-  </EntityContainer>
   <EntityType Name="Artdetail">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="nameart" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="userrole" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="nameartist" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="descriptionofart" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="artsize" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nameart" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="hidemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="nameartist" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="descriptionofart" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="artsize" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="price" Type="Int32" Nullable="false" />
     <Property Name="avali" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="review" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="img" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="dates" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="hidemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="review" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="appstatus" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

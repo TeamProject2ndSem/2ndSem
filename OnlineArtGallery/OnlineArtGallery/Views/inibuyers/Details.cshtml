@@ -5,127 +5,105 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>inibuyer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.fname)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.fname)
-        </dd>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Favicons -->
+        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lname)
-        </dt>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-        <dd>
-            @Html.DisplayFor(model => model.lname)
-        </dd>
+        <!-- Vendor CSS Files -->
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-8 entries">
+                        <article class="entry">
+                            <h2 class="entry-title">
+                                <a href="blog-single.html">User-Details</a>
+                            </h2>
+                            <div class="entry-meta">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-black">Name : </label>
+                                        @Html.DisplayFor(model => model.fname) @Html.DisplayFor(model => model.lname)
+                                    </div>
+                                    <div class="col">
+                                        <label class="text-black">Email : </label>
+                                        @Html.DisplayFor(model => model.email)
+                                    </div>
+                                </div>
+                                <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+                                    <div class="col">
+                                        <label class="text-black">Phone : </label>
+                                        @Html.DisplayFor(model => model.contacto)
+                                    </div>
+                                    <div class="col">
+                                        <label class="text-black">Tel-Phone : </label>
+                                        @Html.DisplayFor(model => model.contactt)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-black">Gender : </label>
+                                        @Html.DisplayFor(model => model.gender)
+                                    </div>
+                                   
+                                    <div class="col">
+                                        <label class="text-black">Location : </label>
+                                        @Html.DisplayFor(model => model.region), @Html.DisplayFor(model => model.city), @Html.DisplayFor(model => model.country).
+                                    </div>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.contacto)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.contacto)
-        </dd>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-black">Postal-Code : </label>
+                                        @Html.DisplayFor(model => model.pcode)
+                                    </div>
+                                    <div class="col">
+                                        <label class="text-black">Address : </label>
+                                        @Html.DisplayFor(model => model.adress)
+                                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.contactt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.contactt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.adress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.adress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.region)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.region)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.city)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.city)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.country)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pcode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pcode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.gender)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pass)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pass)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.verifyed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.verifyed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserRole.role)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserRole.role)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                                </div>
+                                </div>
+</article><!-- End blog entry -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+}

@@ -51,7 +51,6 @@ namespace OnlineArtGallery.Controllers
             //overloaded signup
             using (var context = new galleryEntities1())
             {
-                
                 try
                 {
                     //it is used to add information in database table inibuyer

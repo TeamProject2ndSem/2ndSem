@@ -10,26 +10,26 @@ namespace OnlineArtGallery.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        private galleryEntities1 db = new galleryEntities1();
+
         public ActionResult Index()
         {
             return View();
+
         }
 
         public ActionResult Journey()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
         public ActionResult visionnMission()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
         public ActionResult PrivacynPolicy()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
@@ -37,13 +37,12 @@ namespace OnlineArtGallery.Controllers
         
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
-        public ActionResult Exhibition()
+        public ActionResult ArtInSale()
         {
-            return View();
+            return View(db.Artdetails.ToList());
         }
         [Authorize(Roles = "Buyer")]
         public ActionResult Payment()
@@ -53,8 +52,8 @@ namespace OnlineArtGallery.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Buyer")]
         [HttpGet]
+        [Authorize(Roles = "Buyer")]
         public ActionResult PersonalDe()
         {
             try
@@ -63,8 +62,6 @@ namespace OnlineArtGallery.Controllers
                 using (galleryEntities1 context = new galleryEntities1())
                 {
                     var dated = context.inibuyers.Where(x => x.email == name).SingleOrDefault();
-                   
-                    
                     return View(dated);
                 }
             }

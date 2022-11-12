@@ -1,0 +1,115 @@
+﻿@model IEnumerable<OnlineArtGallery.Models.Artdetail>
+
+@{
+    ViewBag.Title = "ArtInSale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document</title>
+            <!-- Favicons -->
+            <link href="~/ThemePageIntegrated/Flexor/assets/img/favicon.png" rel="icon" />
+            <link href="~/ThemePageIntegrated/Flexor/assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+            <!-- Google Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+                  rel="stylesheet" />
+
+            <!-- Vendor CSS Files -->
+            <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+            <link href="assets/vendor/bootstrap/css/bootstrap.min.css"
+                  rel="stylesheet" />
+            <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+                  rel="stylesheet" />
+            <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+            <link href="assets/vendor/glightbox/css/glightbox.min.css"
+                  rel="stylesheet" />
+            <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+            <!-- Template Main CSS File -->
+            <link href="assets/css/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <!-- ======= Team Section ======= -->
+            <section id="team" class="team section-bg">
+                <div class="container">
+                    <div class="section-title">
+                        <h2 data-aos="fade-up">Art In Sale</h2>
+                        <p data-aos="fade-up">Instock Art Displayed</p>
+                    </div>
+
+                    <div class="row">
+                        @foreach (var stem in Model)
+                        {
+                            string verify = stem.appstatus.ToString();
+
+                            if (verify == "Approved")
+                            {
+                                <div hidden>
+                                    <div class="row">
+                                        <div class="col">
+                                            @Html.DisplayFor(modelItem => stem.id)
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 d-flex align-items-stretch"
+                                     data-aos="fade-up">
+                                    <div class="member">
+                                        <div class="member-img">
+                                            <img src="@Url.Content(stem.img)"
+                                                 class="img-fluid"
+                                                 alt="" />
+
+                                        </div>
+                                        <div class="member-info">
+                                            <h4>Art name: <b> @Html.DisplayFor(modelItem => stem.nameart)  </b></h4>
+                                            <span>Artist name: <b>@Html.DisplayFor(modelItem => stem.nameartist)</b></span>
+                                            <span>Price : <b>@Html.DisplayFor(modelItem => stem.price)</b></span>
+                                            <span>Size : @Html.DisplayFor(modelItem => stem.artsize) </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            }
+
+                        }
+
+
+                        <!-- Row end -->
+                    </div>
+                </div>
+            </section>
+            <!-- End Team Section -->
+        </body>
+
+    </html>
+
+    <!-- Vendor JS Files -->
+    <script src="~/ThemePageIntegrated/Flexor/ assets/vendor/aos/aos.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/ThemePageIntegrated/Flexor/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/ThemePageIntegrated/Flexor/assets/js/main.js"></script>
+
+}
+}

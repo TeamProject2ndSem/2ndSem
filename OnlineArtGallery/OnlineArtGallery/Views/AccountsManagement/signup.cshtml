@@ -32,43 +32,45 @@
 
                                 <form>
 
-                                    <div class="form-check form-outline mb-4 text-center">
-                                        <label class="form-label font-weight-bold px-5" for="user">UserRole</label>
-                                        @Html.RadioButtonFor(model => model.users, "Buyer", new { @class = "form-check-input", @type = "radio", @name = "user", @id = "Buyer" })
+                                    <div class="col" hidden>
+                                        @*Buyer*@
+                                        @Html.RadioButtonFor(model => model.users, "Buyer", new { @class = "form-check-input", @type = "radio", @name = "user", @id = "Buyer", @checked = "checked" })
                                         <label class="form-check-label font-italic pr-4" for="Buyer">
                                             Buyer
                                         </label>
-
-                                        @Html.RadioButtonFor(model => model.users, "Artist", new { @class = "form-check-input", @type = "radio", @name = "user", @id = "Artist" })
-                                        <label class="form-check-label pl-1 font-italic " for="Artist">
-                                            Artist
-                                        </label>
                                     </div>
-                                    <div class="form-check form-outline mb-4 text-center">
-                                        <label class="form-label px-5 font-weight-bold ">Gender</label>
-                                        @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "form-check-input ", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault1" })
-                                        <label class="form-check-label font-italic pr-4" for="flexRadioDefault1">
-                                            Male
-                                        </label>
-                                        @Html.RadioButtonFor(model => model.gender, "Female", new { @class = "form-check-input ", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault2" })
 
-                                        <label class="form-check-label font-italic px-1 " for="flexRadioDefault2">
-                                            Female
-                                        </label>
-
-                                        <label class="form-check-label  pl-4" for="">
-                                            <!-- blank     -->
-                                        </label>
-
-                                        @Html.RadioButtonFor(model => model.gender, "Others", new { @class = "form-check-input   px-2", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault3" })
-                                        <label class="form-check-label  pl-1" for="flexRadioDefault3">
-                                            Others
-                                        </label>
-                                    </div>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <div class="form-check form-outline mb-4 text-center">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label class="form-label font-weight-bold px-5" for="user">UserRole</label>
+                                                </div>
+                                                <div class="col">
+                                                    @*Buyer*@
+                                                    @Html.RadioButtonFor(model => model.users, "Buyer", new { @class = "form-check-input", @type = "radio", @name = "user", @id = "Buyer", @checked = "checked" })
+                                                    <label class="form-check-label font-italic pr-4" for="Buyer">
+                                                        Buyer
+                                                    </label>
+                                                </div>
+                                                <div class="col">
+                                                    @if (User.IsInRole("Admin"))
+                                                    {
+                                                        //3rd userrole radio button will be only visible when admin will create account
+                                                        //Admin
+                                                        @Html.RadioButtonFor(model => model.users, "Admin", new { @class = "form-check-input pl-3", @type = "radio", @name = "user", @id = "Admin" })
+                                                        <label class="form-check-label pl-7 font-italic " for="Admin">
+                                                            Admin
+                                                        </label>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>}
 
                                     <div class="row g-5">
                                         <div class="col">
-                                            <!-- Name input -->
+                                            <!-- First Name input -->
                                             <div class="form-outline">
                                                 <div class="form-outline mb-4">
                                                     <label class="form-label" for="FName">First Name</label>
@@ -78,7 +80,7 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <!-- Email input -->
+                                            <!-- Last Name input -->
                                             <div class="form-outline">
                                                 <div class="form-outline mb-4">
                                                     <label class="form-label" for="lname">Last Name</label>
@@ -101,7 +103,7 @@
 
                                     <div class="row g-5">
                                         <div class="col">
-                                            <!-- Name input -->
+                                            <!-- Contact input -->
                                             <div class="form-outline">
                                                 <div class="form-outline mb-4">
                                                     <label class="form-label" for="contactt">Phone No</label>
@@ -111,7 +113,77 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <!-- Email input -->
+                                            <!-- Phone input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="contacto">Tel-Phone</label>
+                                                    @Html.TextBoxFor(m => m.contacto, new { @class = "form-control form-control-lg ", @type = "text", @id = "contacto" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Region/State input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="region">Region</label>
+                                                    @Html.TextBoxFor(m => m.region, new { @class = "form-control form-control-lg ", @type = "text", @id = "region" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- City input -->
+                                            <div class="form-outline mb-4">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="city">City</label>
+                                                    @Html.TextBoxFor(m => m.city, new { @class = "form-control form-control-lg ", @type = "text", @id = "city" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Country input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="coun">Country</label>
+                                                    @Html.TextBoxFor(m => m.country, new { @class = "form-control form-control-lg ", @type = "text", @id = "coun" })
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- Postal Code input -->
+                                            <div class="form-outline">
+                                                <div class="form-outline mb-4">
+                                                    <label class="form-label" for="pcode">Postal Code</label>
+                                                    @Html.TextBoxFor(m => m.pcode, new { @class = "form-control form-control-lg ", @type = "text", @id = "pcode" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-5">
+                                        <div class="col">
+                                            <!-- Pass input -->
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label" for="pass">Password</label>
+                                                @Html.TextBoxFor(m => m.pass, new { @class = "form-control form-control-lg ", @type = "password", @id = "pass" })
+
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <!-- Address input -->
                                             <div class="form-outline">
                                                 <div class="form-outline mb-4">
                                                     <div class="form-outline mb-4">
@@ -124,75 +196,42 @@
                                         </div>
                                     </div>
 
-                                    <div class="row g-5">
-                                        <div class="col">
-                                            <!-- Name input -->
-                                            <div class="form-outline">
-                                                <div class="form-outline mb-4">
-                                                    <label class="form-label" for="region">Region</label>
-                                                    @Html.TextBoxFor(m => m.region, new { @class = "form-control form-control-lg ", @type = "text", @id = "region" })
-                                                </div>
+                                    @*Gender Input*@
+                                    <div class="form-check form-outline mb-4 text-center">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="form-label px-5 font-weight-bold ">Gender</label>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <!-- Email input -->
-                                            <div class="form-outline mb-4">
-                                                <div class="form-outline mb-4">
-                                                    <label class="form-label" for="city">City</label>
-                                                    @Html.TextBoxFor(m => m.city, new { @class = "form-control form-control-lg ", @type = "text", @id = "city" })
+                                            <div class="col">
 
-                                                </div>
+                                                @Html.RadioButtonFor(model => model.gender, "Male", new { @class = "form-check-input ", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault1" })
+                                                <label class="form-check-label font-italic pr-4" for="flexRadioDefault1">
+                                                    Male
+                                                </label>
                                             </div>
-                                        </div>
-                                    </div>
+                                            <div class="col">
 
-                                   
-                                    <div class="row g-5">
-                                        <div class="col">
-                                            <!-- Name input -->
-                                            <div class="form-outline">
-                                                <div class="form-outline mb-4">
-                                                    <label class="form-label" for="coun">Country</label>
-                                                    @Html.TextBoxFor(m => m.country, new { @class = "form-control form-control-lg ", @type = "text", @id = "coun" })
+                                                @Html.RadioButtonFor(model => model.gender, "Female", new { @class = "form-check-input ", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault2", @checked = "checked" })
 
-
-                                                </div>
-
+                                                <label class="form-check-label font-italic px-1 " for="flexRadioDefault2">
+                                                    Female
+                                                </label>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <!-- Email input -->
-                                            <div class="form-outline">
-                                                <div class="form-outline mb-4">
-                                                    <label class="form-label" for="pcode">Postal Code</label>
-                                                    @Html.TextBoxFor(m => m.pcode, new { @class = "form-control form-control-lg ", @type = "text", @id = "pcode" })
 
-                                                </div>
+                                            <div class="col">
+
+                                                @Html.RadioButtonFor(model => model.gender, "Others", new { @class = "form-check-input   px-2", @type = "radio", @name = "flexRadioDefault", @id = "flexRadioDefault3" })
+                                                <label class="form-check-label  pl-1" for="flexRadioDefault3">
+                                                    Others
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="pass">Password</label>
-                                        @Html.TextBoxFor(m => m.pass, new { @class = "form-control form-control-lg ", @type = "password", @id = "pass" })
-
-                                    </div>
-
-
-
-                                    @*<div class="form-check d-flex justify-content-center mb-5">
-            @Html.CheckBoxFor(model => model.verify ,new { @class="form-check-input me-2" ,@type="checkbox" ,@value="" ,@id= "Verify" })
-            <label class="form-check-label" for="Verify">
-                <br>
-                I agree all statements in  <a href="#!" class="text-body"><u>Terms of service</u></a>
-            </label>
-        </div>*@
 
                                     <div class="d-flex justify-content-center">
-                                        <button type="submit"
-                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                            Create
-                                        </button>
+                                        <!-- Submit button -->
+                                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+
                                     </div>
                                     <br>
                                 </form>
@@ -214,6 +253,4 @@
 </body>
 </html>
 }
-<div>
-    @Html.ActionLink("Click to login", "Login")
-</div>
+

@@ -36,18 +36,43 @@ country varchar(250) not null,
 pcode varchar(250) not null,
 gender varchar(250) not null,
 pass varchar(250) not null,
-verifyed int default 0,
-FOREIGN KEY (users) REFERENCES  UserRole(role)
+FOREIGN KEY (users) REFERENCES  UserRole(role),
 );
 
+--drop table inibuyer
+
+select * from inibuyer
+truncate table inibuyer
+--request of reqmembershiptable
+--create table verifyReq(
+--id int identity(0,1) primary key not null,
+--veri varchar(250) not null
+--)
+
+
+--select * from verifyReq
+truncate table verify
+--Verfied(membershiptable)
+create table verify(
+id int identity(0,1)  not null,
+veri varchar(250) primary key not null
+)
+
+--insert hardcoded values in sql
+insert into verify values ('Isnt Aprroved'),('Approved')
+
+
+--select verfiy
+select * from verify
+
 --drop table
-drop table inibuyer
+--drop table verify
 
 --Hardcoded-Query to insert information 
 insert into inibuyer(fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass) values('Laiba','Razi Khan','laibarazikhan2@gmail.com'
 ,'03373112816','03022879239','Gulshan-e-iqbal block 13-A','sindh','karachi','Pakistan','72388','female','112345');
 
-insert into inibuyer(users,fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass) values('Artist','Sehar','Khan','Seharkhan2@gmail.com'
+insert into inibuyer(fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass) values('Sehar','Khan','Seharkhan2@gmail.com'
 ,'03373112816','03022879239','Gulistan-e-johar block','sindh','karachi','Pakistan','72328','female','112345');
 
 insert into inibuyer(users,fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass) values('Admin','root','root','root'
@@ -59,46 +84,17 @@ select * from inibuyer;
 select users as 'user' ,fname as 'First Name',lname as 'Last Name',email as Email,contacto as Contact1,contactt as Contact2,adress as Address,region as State,city as city
 ,country as Country,pcode as 'Postal Code',gender as Gender,pass as Password from inibuyer;
 
-
-create table reqacces(
-reqid int identity(1,1) primary key not null,
-requsers varchar(50) not null ,
-reqfname varchar(250) not null,
-reqlname varchar(250) not null,
-reqemail varchar(250) unique not null,
-reqcontacto varchar(250) not null,
-reqcontactt varchar(250) not null,
-reqadress varchar(550) not null,
-reqregion varchar(250) not null,
-reqcity varchar(250) not null,
-reqcountry varchar(250) not null,
-reqpcode varchar(250) not null,
-reqgender varchar(250) not null,
-reqpass varchar(250) not null,
-reqstatus int default 0,--this will act as switch button if admin turn it to 1 than buyer will get account access:
-);
-
-drop table reqacces
---reqid,requsers,reqfname,reqlname,reqemail,reqcontacto,reqcontactt ,reqadress ,reqregion ,reqcity ,reqcountry ,reqpcode ,reqgender ,reqpass ,reqstatus
-
---Copy whole request from inibuyer to request-for access;
--- NoteAnd to copy specific data than copy from Email and id both are unique
-insert into reqacces( requsers,reqfname,reqlname,reqemail,reqcontacto,reqcontactt ,reqadress ,reqregion ,reqcity ,reqcountry ,reqpcode ,reqgender ,reqpass) 
-select users,fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass from inibuyer
-
 -- NoteAnd to copy specific data than copy from Email and id both are unique
 select * from reqacces
 select * from inibuyer
 select * from UserRole
 
-use gallery
 -- ========>Admin Tables<========
 create table Artdetails
 (
 id int identity(1,1) primary key not null,
 nameart varchar(250) not null,
 hidemail varchar(250) default 'GalleryLocal' ,
-userrole varchar(250) default 'GalleryLocal' ,
 nameartist varchar(250) not null,
 descriptionofart nvarchar(1000) not null,
 artsize nvarchar(200) not null,
@@ -106,15 +102,16 @@ price int not null,
 avali varchar(100) default 'Instock',
 review nvarchar(1000) not null,
 img nvarchar(4000) not null,
-dates varchar(250) default getdate() 
+appstatus varchar(250) default 'Isnt Aprroved' 
 )
 drop table Artdetails
 
-select * from inibuyer
-create
-drop table Artdetails
 --select All from Artdetail
 select * from Artdetails
+
+--truncate table Artdetails
+
+--truncate table inibuyer
 
 
 

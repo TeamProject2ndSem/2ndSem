@@ -1,18 +1,19 @@
 ﻿@model OnlineArtGallery.Models.Artdetail
 
 @{
+    /**/
+
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Artdetail</h4>
+
+    <div hidden>
+        @*admin will only approve images but not able to change them*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
@@ -26,10 +27,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.userrole, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.hidemail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.userrole, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.userrole, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.hidemail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.hidemail, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -89,21 +90,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.dates, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.dates, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dates, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.hidemail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.hidemail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.hidemail, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -111,8 +97,108 @@
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Portfolio Details - Flexor Bootstrap Template</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+
+        <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+
+
+    </head>
+
+    <body>
+
+        @if (User.IsInRole("Admin"))
+        {
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card text-center">
+                            <h5>POST STATUS EDIT</h5>
+                            <div class="card-header">
+                                <img src="@Url.Content(Model.img)" alt="" width="400" height="400">
+                            </div>
+                            <div class="card-footer text-muted">
+                                <div class="row">
+                                    <div class="form-check col-md-3">
+                                        @Html.RadioButtonFor(model => model.appstatus, "Approved", new { @class = "form-check-input", @type = "radio", @id = "app" })
+                                        <label class="form-check-label font-italic pr-4" for="app">
+                                            Approved
+                                        </label>
+                                    </div>
+
+                                    <div class=" col-md-3">
+                                        @Html.RadioButtonFor(model => model.appstatus, "Isn't Approved", new { @class = "form-check-input", @type = "radio", @id = "notapp" })
+                                        <label class="form-check-label pl-1 font-italic " for="notapp">
+                                            Isn't Approved
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <h6 class="card-title text-muted">If You Have Changed The Status Of Post You Can Check On Index</h6>
+                                    </div>
+                                    <div class="col-md-2">
+                                        @Html.ActionLink("Back to List", "Index", "Artdetails", new { @class = "btn btn-primary" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+       
+    </body>
+
+
+</html>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/aos/aos.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="~/ThemePageIntegrated/Flexor/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="~/ThemePageIntegrated/Flexor/assets/js/main.js"></script>
+}

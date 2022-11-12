@@ -7,7 +7,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nameart" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="hidemail" Type="varchar" MaxLength="250" />
-    <Property Name="userrole" Type="varchar" MaxLength="250" />
     <Property Name="nameartist" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="descriptionofart" Type="nvarchar" MaxLength="1000" Nullable="false" />
     <Property Name="artsize" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -15,7 +14,7 @@
     <Property Name="avali" Type="varchar" MaxLength="100" />
     <Property Name="review" Type="nvarchar" MaxLength="1000" Nullable="false" />
     <Property Name="img" Type="nvarchar" MaxLength="4000" Nullable="false" />
-    <Property Name="dates" Type="varchar" MaxLength="250" />
+    <Property Name="appstatus" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="inibuyer">
     <Key>
@@ -35,7 +34,6 @@
     <Property Name="pcode" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="gender" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="pass" Type="varchar" MaxLength="250" Nullable="false" />
-    <Property Name="verifyed" Type="int" />
   </EntityType>
   <EntityType Name="reqacces">
     <Key>
@@ -65,7 +63,7 @@
     <Property Name="userid" Type="int" Nullable="false" />
     <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK__inibuyer__users__05D8E0BE">
+  <Association Name="FK__inibuyer__users__56B3DD81">
     <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
     <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -82,7 +80,7 @@
     <EntitySet Name="inibuyer" EntityType="Self.inibuyer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="reqacces" EntityType="Self.reqacces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__inibuyer__users__05D8E0BE" Association="Self.FK__inibuyer__users__05D8E0BE">
+    <AssociationSet Name="FK__inibuyer__users__56B3DD81" Association="Self.FK__inibuyer__users__56B3DD81">
       <End Role="UserRole" EntitySet="UserRole" />
       <End Role="inibuyer" EntitySet="inibuyer" />
     </AssociationSet>

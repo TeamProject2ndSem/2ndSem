@@ -12,7 +12,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nameart" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="hidemail" Type="varchar" MaxLength="250" />
-          <Property Name="userrole" Type="varchar" MaxLength="250" />
           <Property Name="nameartist" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="descriptionofart" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="artsize" Type="nvarchar" MaxLength="200" Nullable="false" />
@@ -20,7 +19,7 @@
           <Property Name="avali" Type="varchar" MaxLength="100" />
           <Property Name="review" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="img" Type="nvarchar" MaxLength="4000" Nullable="false" />
-          <Property Name="dates" Type="varchar" MaxLength="250" />
+          <Property Name="appstatus" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="inibuyer">
           <Key>
@@ -40,7 +39,6 @@
           <Property Name="pcode" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="gender" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="pass" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="verifyed" Type="int" />
         </EntityType>
         <EntityType Name="reqacces">
           <Key>
@@ -70,7 +68,7 @@
           <Property Name="userid" Type="int" Nullable="false" />
           <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__inibuyer__users__05D8E0BE">
+        <Association Name="FK__inibuyer__users__56B3DD81">
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
           <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -87,7 +85,7 @@
           <EntitySet Name="inibuyer" EntityType="Self.inibuyer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="reqacces" EntityType="Self.reqacces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__inibuyer__users__05D8E0BE" Association="Self.FK__inibuyer__users__05D8E0BE">
+          <AssociationSet Name="FK__inibuyer__users__56B3DD81" Association="Self.FK__inibuyer__users__56B3DD81">
             <End Role="UserRole" EntitySet="UserRole" />
             <End Role="inibuyer" EntitySet="inibuyer" />
           </AssociationSet>
@@ -114,8 +112,7 @@
           <Property Name="pcode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="gender" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="verifyed" Type="Int32" />
-          <NavigationProperty Name="UserRole" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="inibuyer" ToRole="UserRole" />
+          <NavigationProperty Name="UserRole" Relationship="galleryModel.FK__inibuyer__users__56B3DD81" FromRole="inibuyer" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="reqacce">
           <Key>
@@ -137,18 +134,28 @@
           <Property Name="reqpass" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reqstatus" Type="Int32" />
         </EntityType>
+        <EntityContainer Name="galleryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="inibuyers" EntityType="Self.inibuyer" />
+          <EntitySet Name="reqacces" EntityType="Self.reqacce" />
+          <EntitySet Name="UserRoles" EntityType="galleryModel.UserRole" />
+          <AssociationSet Name="FK__inibuyer__users__56B3DD81" Association="galleryModel.FK__inibuyer__users__56B3DD81">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="inibuyer" EntitySet="inibuyers" />
+          </AssociationSet>
+          <EntitySet Name="Artdetails" EntityType="galleryModel.Artdetail" />
+        </EntityContainer>
         <EntityType Name="UserRole">
           <Key>
             <PropertyRef Name="role" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userid" Type="Int32" Nullable="false" />
-          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="inibuyers" Relationship="Self.FK__inibuyer__users__70DDC3D8" FromRole="UserRole" ToRole="inibuyer" />
+          <Property Name="role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="inibuyers" Relationship="galleryModel.FK__inibuyer__users__56B3DD81" FromRole="UserRole" ToRole="inibuyer" />
         </EntityType>
-        <Association Name="FK__inibuyer__users__70DDC3D8">
-          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
-          <End Role="inibuyer" Type="Self.inibuyer" Multiplicity="*" />
+        <Association Name="FK__inibuyer__users__56B3DD81">
+          <End Type="galleryModel.UserRole" Role="UserRole" Multiplicity="1" />
+          <End Type="galleryModel.inibuyer" Role="inibuyer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserRole">
               <PropertyRef Name="role" />
@@ -158,39 +165,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="galleryEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="inibuyers" EntityType="Self.inibuyer" />
-          <EntitySet Name="reqacces" EntityType="Self.reqacce" />
-          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
-          <AssociationSet Name="FK__inibuyer__users__70DDC3D8" Association="Self.FK__inibuyer__users__70DDC3D8">
-            <End Role="UserRole" EntitySet="UserRoles" />
-            <End Role="inibuyer" EntitySet="inibuyers" />
-          </AssociationSet>
-          <EntitySet Name="Artdetails" EntityType="galleryModel.Artdetail" />
-        </EntityContainer>
         <EntityType Name="Artdetail">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nameart" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="userrole" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="nameartist" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descriptionofart" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="artsize" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nameart" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="hidemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="nameartist" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="descriptionofart" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="artsize" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Int32" Nullable="false" />
           <Property Name="avali" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="review" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="img" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dates" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="hidemail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="review" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="appstatus" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="galleryModelStoreContainer" CdmEntityContainer="galleryEntities1">
+        <EntityContainerMapping StorageEntityContainer="galleryModelStoreContainer" CdmEntityContainer="galleryEntities">
           <EntitySetMapping Name="inibuyers">
             <EntityTypeMapping TypeName="galleryModel.inibuyer">
               <MappingFragment StoreEntitySet="inibuyer">
@@ -208,7 +204,6 @@
                 <ScalarProperty Name="pcode" ColumnName="pcode" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="pass" ColumnName="pass" />
-                <ScalarProperty Name="verifyed" ColumnName="verifyed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -236,17 +231,16 @@
           <EntitySetMapping Name="UserRoles">
             <EntityTypeMapping TypeName="galleryModel.UserRole">
               <MappingFragment StoreEntitySet="UserRole">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Artdetails">
             <EntityTypeMapping TypeName="galleryModel.Artdetail">
               <MappingFragment StoreEntitySet="Artdetails">
-                <ScalarProperty Name="hidemail" ColumnName="hidemail" />
-                <ScalarProperty Name="dates" ColumnName="dates" />
+                <ScalarProperty Name="appstatus" ColumnName="appstatus" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="review" ColumnName="review" />
                 <ScalarProperty Name="avali" ColumnName="avali" />
@@ -254,7 +248,7 @@
                 <ScalarProperty Name="artsize" ColumnName="artsize" />
                 <ScalarProperty Name="descriptionofart" ColumnName="descriptionofart" />
                 <ScalarProperty Name="nameartist" ColumnName="nameartist" />
-                <ScalarProperty Name="userrole" ColumnName="userrole" />
+                <ScalarProperty Name="hidemail" ColumnName="hidemail" />
                 <ScalarProperty Name="nameart" ColumnName="nameart" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

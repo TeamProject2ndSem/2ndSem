@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="galleryModelStoreContainer" CdmEntityContainer="galleryEntities1">
+  <EntityContainerMapping StorageEntityContainer="galleryModelStoreContainer" CdmEntityContainer="galleryEntities">
     <EntitySetMapping Name="inibuyers">
       <EntityTypeMapping TypeName="galleryModel.inibuyer">
         <MappingFragment StoreEntitySet="inibuyer">
@@ -18,7 +18,6 @@
           <ScalarProperty Name="pcode" ColumnName="pcode" />
           <ScalarProperty Name="gender" ColumnName="gender" />
           <ScalarProperty Name="pass" ColumnName="pass" />
-          <ScalarProperty Name="verifyed" ColumnName="verifyed" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -46,17 +45,16 @@
     <EntitySetMapping Name="UserRoles">
       <EntityTypeMapping TypeName="galleryModel.UserRole">
         <MappingFragment StoreEntitySet="UserRole">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Artdetails">
       <EntityTypeMapping TypeName="galleryModel.Artdetail">
         <MappingFragment StoreEntitySet="Artdetails">
-          <ScalarProperty Name="hidemail" ColumnName="hidemail" />
-          <ScalarProperty Name="dates" ColumnName="dates" />
+          <ScalarProperty Name="appstatus" ColumnName="appstatus" />
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="review" ColumnName="review" />
           <ScalarProperty Name="avali" ColumnName="avali" />
@@ -64,7 +62,7 @@
           <ScalarProperty Name="artsize" ColumnName="artsize" />
           <ScalarProperty Name="descriptionofart" ColumnName="descriptionofart" />
           <ScalarProperty Name="nameartist" ColumnName="nameartist" />
-          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="hidemail" ColumnName="hidemail" />
           <ScalarProperty Name="nameart" ColumnName="nameart" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
