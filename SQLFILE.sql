@@ -9,8 +9,6 @@ id int identity(1,1)  not null,
 userid int not null,
 role varchar(50) primary key,
 )
---drop table 
---drop table UserRole
 
 --Hardcoded-Query to insert information 
 --Insert UserRole Values.
@@ -20,7 +18,7 @@ insert into UserRole(userid,role) values('2','Buyer')
 
 insert into UserRole(userid,role) values('3','Artist')
 
--- Second create table inibuyer 'for intial request to admin to approve buyers account
+-- Second create table inibuyer to stors users information
 create table inibuyer(
 id int identity(1,1) primary key not null,
 users varchar(50) not null default('Buyer'),
@@ -39,34 +37,8 @@ pass varchar(250) not null,
 FOREIGN KEY (users) REFERENCES  UserRole(role),
 );
 
---drop table inibuyer
-
+--select all from inibuyers
 select * from inibuyer
-truncate table inibuyer
---request of reqmembershiptable
---create table verifyReq(
---id int identity(0,1) primary key not null,
---veri varchar(250) not null
---)
-
-
---select * from verifyReq
-truncate table verify
---Verfied(membershiptable)
-create table verify(
-id int identity(0,1)  not null,
-veri varchar(250) primary key not null
-)
-
---insert hardcoded values in sql
-insert into verify values ('Isnt Aprroved'),('Approved')
-
-
---select verfiy
-select * from verify
-
---drop table
---drop table verify
 
 --Hardcoded-Query to insert information 
 insert into inibuyer(fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass) values('Laiba','Razi Khan','laibarazikhan2@gmail.com'
@@ -77,17 +49,6 @@ insert into inibuyer(fname,lname,email,contacto,contactt,adress,region,city,coun
 
 insert into inibuyer(users,fname,lname,email,contacto,contactt,adress,region,city,country,pcode,gender,pass) values('Admin','root','root','root'
 ,'03373112816','03022879239','Gulistan-e-johar block','sindh','karachi','Pakistan','72328','female','root');
-
---Select Query
-select * from inibuyer;
---Select Query with alias
-select users as 'user' ,fname as 'First Name',lname as 'Last Name',email as Email,contacto as Contact1,contactt as Contact2,adress as Address,region as State,city as city
-,country as Country,pcode as 'Postal Code',gender as Gender,pass as Password from inibuyer;
-
--- NoteAnd to copy specific data than copy from Email and id both are unique
-select * from reqacces
-select * from inibuyer
-select * from UserRole
 
 -- ========>Admin Tables<========
 create table Artdetails
@@ -104,14 +65,9 @@ review nvarchar(1000) not null,
 img nvarchar(4000) not null,
 appstatus varchar(250) default 'Isnt Aprroved' 
 )
-drop table Artdetails
-
 --select All from Artdetail
 select * from Artdetails
 
---truncate table Artdetails
-
---truncate table inibuyer
 
 
 
